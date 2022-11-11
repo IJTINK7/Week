@@ -1,0 +1,8 @@
+00 - JS/TS for students - введение
+https://www.youtube.com/watch?v=WMhgAwQQHN0&t=33s
+01 - JS TS for students - тесты
+https://www.youtube.com/watch?v=lec2k-V63EA
+02 - JS/TS for students - объекты
+https://www.youtube.com/watch?v=y8gv_Lafbfo
+03 - JS/TS for students - функции
+https://www.youtube.com/watch?v=lHHP1l7NoZk
