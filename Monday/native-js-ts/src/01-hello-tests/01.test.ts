@@ -1,4 +1,4 @@
-import {sum} from "./01";
+import {multiply, sum} from "./01";
 
 test('sum should be correct', ()=>{
 	const a = 1;
@@ -12,4 +12,18 @@ test('sum should be correct', ()=>{
 	expect(result1).toBe(3);
 	expect(result2).toBe(5);
 	expect(result3).toBe(4);
+});
+
+test('result should be correct', ()=>{
+	const a = 3;
+	const b = 4;
+	const c = 5;
+
+	const result4 = multiply(a,b);
+	const result5 = multiply(b,c);
+	const result6 = multiply(a,c);
+
+	expect(result4).toBe(12);
+	expect(result5).toBe(20);
+	expect(result6).toBe(15);
 });
