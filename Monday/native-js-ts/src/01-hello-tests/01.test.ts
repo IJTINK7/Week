@@ -1,4 +1,4 @@
-import {multiply, sum} from "./01";
+import {multiply, splitToWords, sum} from "./01";
 
 test('sum should be correct', () => { // 2 arguments - name of test and function with three phases: 1)data; 2)action; 3)expect;
 	//data
@@ -28,4 +28,15 @@ test('result should be correct', () => {
 	expect(result4).toBe(12);
 	expect(result5).toBe(20);
 	expect(result6).toBe(15);
+});
+
+test("splitting the sentence to words should be correct", () => {
+	const sentence = "Hello my friend";
+
+	const result1 = splitToWords(sentence);
+
+	expect(result1.length).toBe(3);
+	expect(result1[0]).toBe("Hello");
+	expect(result1[1]).toBe("my");
+	expect(result1[2]).toBe("friend");
 });
