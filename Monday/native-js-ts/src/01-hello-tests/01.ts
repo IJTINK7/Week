@@ -7,5 +7,5 @@ export const multiply = (a:number, b: number) => {
 }
 
 export const splitToWords = (sentence: string) =>{
-	return ["Hello", "my", "friend"];
+	return sentence.split(' ');
 }
