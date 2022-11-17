@@ -22,10 +22,25 @@ export function App() {
 	const removeTask =(taskId:number)=>{
 		setTasks(tasks.filter(el => el.id !== taskId));
 	}
+	const [filterValueKey, setFilterValueKey] = useState("All")
+
+
+	let filteredTasks = tasks;
+	const filterTasks =(filterKey:string)=>{
+		setFilterValueKey(filterKey)
+	}
+	if(filterValueKey === "Active"){
+		filteredTasks = tasks.filter(el=>el.checked)
+	}
+	if(filterValueKey === "Completed"){
+		filteredTasks = tasks.filter(el=>!el.checked)
+	}
+
+
 
 	return (
 		<div className="App">
-			<ToDoList title={"What to learn"} list={tasks} removeTask={removeTask} />
+			<ToDoList title={"What to learn"} list={filteredTasks} removeTask={removeTask} filterTasks={filterTasks} />
 		</div>
 	);
 }

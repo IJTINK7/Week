@@ -4,6 +4,7 @@ export type TitlePropsType = {
 	title: string;
 	list: Array<ListPropsType>;
 	removeTask:(taskId:number)=>void;
+	filterTasks:(filterTasks:string)=>void
 }
 
 export type ListPropsType = {
@@ -31,9 +32,9 @@ export const ToDoList = (props: TitlePropsType) => {
 				})}
 			</ul>
 			<div>
-				<button>All</button>
-				<button>Active</button>
-				<button>Completed</button>
+				<button onClick={()=>{props.filterTasks("All")}}>All</button>
+				<button onClick={()=>{props.filterTasks("Active")}}>Active</button>
+				<button onClick={()=>{props.filterTasks("Completed")}}>Completed</button>
 			</div>
 		</div>
 	);
