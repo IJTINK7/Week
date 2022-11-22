@@ -13,11 +13,13 @@ export function App() {
 		{id: 5, checked: false, name: "TS"},
 	]);
 
-	const removeTaskFunction =(TaskId:number)=>{
-		setTasks (tasks.filter(el=>el.id!==TaskId));
+	const removeTaskFunction =(taskId:number)=>{
+		setTasks (tasks.filter(el=>el.id!==taskId));
 	}
 
-
+	const filterTasksFunction =(statusValue:string)=>{
+		console.log(statusValue)
+	}
 
 	let [count, setCount] = useState(1);
 	const onClickHandler = () => {
@@ -25,7 +27,7 @@ export function App() {
 	}
 	return (
 		<div className="App">
-			<ToDoList title={"What to learn"} list={tasks} removeTask={removeTaskFunction}/>
+			<ToDoList title={"What to learn"} list={tasks} removeTask={removeTaskFunction} filterTasks={filterTasksFunction} />
 			<div>
 				<p>Вы кликнули {count} раз(а)</p>
 				<button onClick={onClickHandler}>Нажми на меня</button>
