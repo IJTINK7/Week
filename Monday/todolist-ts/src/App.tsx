@@ -4,15 +4,17 @@ import {ToDoList} from './ToDoList';
 
 
 export function App() {
-	let tasks = [
+
+	let [tasks, setTasks] = useState([
 		{id: 1, checked: true, name: "HTML"},
 		{id: 2, checked: true, name: "CSS"},
 		{id: 3, checked: true, name: "JS"},
 		{id: 4, checked: false, name: "React"},
 		{id: 5, checked: false, name: "TS"},
-	];
+	]);
+
 	const removeTaskFunction =(TaskId:number)=>{
-		console.log(TaskId)
+		setTasks (tasks.filter(el=>el.id!==TaskId));
 	}
 
 
