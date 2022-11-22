@@ -11,6 +11,11 @@ export function App() {
 		{id: 4, checked: false, name: "React"},
 		{id: 5, checked: false, name: "TS"},
 	];
+	const removeTask =()=>{
+		console.log("Click")
+	}
+
+
 
 	let [count, setCount] = useState(1);
 	const onClickHandler = () => {
@@ -18,7 +23,7 @@ export function App() {
 	}
 	return (
 		<div className="App">
-			<ToDoList title={"What to learn"} list={tasks}/>
+			<ToDoList title={"What to learn"} list={tasks} removeTask={removeTask}/>
 			<div>
 				<p>Вы кликнули {count} раз(а)</p>
 				<button onClick={onClickHandler}>Нажми на меня</button>
