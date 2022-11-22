@@ -3,8 +3,6 @@ import React from "react";
 export type TitlePropsType = {
 	title: string;
 	list: Array<ListPropsType>;
-	removeTask:(taskId:number)=>void;
-	filterTasks:(filterTasks:string)=>void
 }
 
 export type ListPropsType = {
@@ -23,8 +21,6 @@ export const ToDoList = (props: TitlePropsType) => {
 				{props.list.map((el) => {
 					return (
 						<li key={el.id}>
-							<button onClick={() => {props.removeTask(el.id)}}>X
-							</button>
 							<input type="checkbox" checked={el.checked}/>
 							<span>{el.name}</span>
 						</li>
@@ -32,9 +28,9 @@ export const ToDoList = (props: TitlePropsType) => {
 				})}
 			</ul>
 			<div>
-				<button onClick={()=>{props.filterTasks("All")}}>All</button>
-				<button onClick={()=>{props.filterTasks("Active")}}>Active</button>
-				<button onClick={()=>{props.filterTasks("Completed")}}>Completed</button>
+				<button>All</button>
+				<button>Active</button>
+				<button>Completed</button>
 			</div>
 		</div>
 	);
