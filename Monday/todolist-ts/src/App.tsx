@@ -36,11 +36,16 @@ export function App() {
 		filteredTasks = tasks.filter(el=>!el.checked)
 	}
 
-
-
+	const [count, setCount] = useState(0);
 	return (
 		<div className="App">
 			<ToDoList title={"What to learn"} list={filteredTasks} removeTask={removeTask} filterTasks={filterTasks} />
+			<div>
+				<p>Вы кликнули {count} раз(а)</p>
+				<button onClick={() => setCount(count + 1)}>
+					Нажми на меня
+				</button>
+			</div>
 		</div>
 	);
 }
