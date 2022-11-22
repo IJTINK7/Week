@@ -11,8 +11,8 @@ export function App() {
 		{id: 4, checked: false, name: "React"},
 		{id: 5, checked: false, name: "TS"},
 	];
-	const removeTask =()=>{
-		console.log("Click")
+	const removeTaskFunction =(TaskId:number)=>{
+		console.log(TaskId)
 	}
 
 
@@ -23,7 +23,7 @@ export function App() {
 	}
 	return (
 		<div className="App">
-			<ToDoList title={"What to learn"} list={tasks} removeTask={removeTask}/>
+			<ToDoList title={"What to learn"} list={tasks} removeTask={removeTaskFunction}/>
 			<div>
 				<p>Вы кликнули {count} раз(а)</p>
 				<button onClick={onClickHandler}>Нажми на меня</button>

@@ -3,7 +3,7 @@ import React from "react";
 export type TitlePropsType = {
 	title: string;
 	list: Array<ListPropsType>;
-	removeTask:()=>void
+	removeTask:(TaskId:number)=>void
 }
 
 export type ListPropsType = {
@@ -22,7 +22,7 @@ export const ToDoList = (props: TitlePropsType) => {
 				{props.list.map((el) => {
 					return (
 						<li key={el.id}>
-							<button onClick={()=>{props.removeTask()}}>x</button>
+							<button onClick={()=>{props.removeTask(el.id)}}>x</button>
 							<input type="checkbox" checked={el.checked}/>
 							<span>{el.name}</span>
 						</li>
