@@ -13,35 +13,16 @@ export function App() {
 		{id: 5, checked: false, name: "TS"},
 	]);
 
-	const removeTaskFunction =(taskId:number)=>{
-		setTasks(tasks.filter(el=>el.id!==taskId));
+
+	const removeTaskFunction = (taskId: number) => {
+		setTasks(tasks.filter(el => el.id !== taskId));
 	}
 
-	let filteredResult = tasks;
-
-	let [valueKey, setValueKey] = useState("All");
-
-	const filterTasksFunction=(statusValue:string)=>{
-		setValueKey(statusValue);
-	}
-	if(valueKey === "Active"){
-		filteredResult = tasks.filter(el=>el.checked);
-	}
-	if(valueKey === "Completed"){
-		filteredResult = tasks.filter(el=>!el.checked);
-	}
-
-	let [count, setCount] = useState(1);
-	const onClickHandler = () => {
-		setCount(count + 1);
-	}
 	return (
 		<div className="App">
-			<ToDoList title={"What to learn"} list={filteredResult} removeTask={removeTaskFunction} filterTasks={filterTasksFunction} />
-			<div>
-				<p>Вы кликнули {count} раз(а)</p>
-				<button onClick={onClickHandler}>Нажми на меня</button>
-			</div>
+			<ToDoList title={"What to learn"}
+					  list={tasks}
+					  removeTask={removeTaskFunction}/>
 		</div>
 	);
 }
