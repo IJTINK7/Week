@@ -13,19 +13,24 @@ export function App() {
 		{id: 5, checked: false, name: "TS"},
 	]);
 
-	let filteredResult = tasks;
+
 	let [content, setContent] = useState("All");
 
 	const filterTasks = (valueKey: string) => {
 		setContent(valueKey);
-	}
-	if (content === "Active") {
-		filteredResult = tasks.filter(el => !el.checked);
-	}
-	if (content === "Completed") {
-		filteredResult = tasks.filter(el => el.checked);
+		activateFilter();
 	}
 
+	const activateFilter =()=>{
+		let filteredTasks = tasks;
+		if (content === "Active") {
+			filteredTasks = tasks.filter(el => !el.checked);
+		}
+		if (content === "Completed") {
+			filteredTasks = tasks.filter(el => el.checked);
+		}
+		return filteredTasks;
+	}
 
 	const removeTaskFunction = (taskId: number) => {
 		setTasks(tasks.filter(el => el.id !== taskId));
@@ -34,7 +39,7 @@ export function App() {
 	return (
 		<div className="App">
 			<ToDoList title={"What to learn"}
-					  list={filteredResult}
+					  list={activateFilter()}
 					  removeTask={removeTaskFunction}
 					  filterTasks={filterTasks}	/>
 		</div>
