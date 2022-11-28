@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {ToDoList} from './ToDoList';
-
+export type FilterValuesType = "All" | "Active" | "Completed";
 
 export function App() {
 
@@ -14,9 +14,9 @@ export function App() {
 	]);
 
 
-	let [content, setContent] = useState("All");
+	let [content, setContent] = useState<FilterValuesType>("All");
 
-	const filterTasks = (valueKey: string) => {
+	const filterTasks = (valueKey: FilterValuesType) => {
 		setContent(valueKey);
 		activateFilter();
 	}

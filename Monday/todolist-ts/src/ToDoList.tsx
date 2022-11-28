@@ -1,10 +1,11 @@
 import React from "react";
+import {FilterValuesType} from "./App";
 
 export type TitlePropsType = {
 	title: string;
 	list: Array<ListPropsType>;
 	removeTask: (taskId: number) => void;
-	filterTasks: (valueKey:string)=> void;
+	filterTasks: (valueKey:FilterValuesType)=> void;
 }
 
 export type ListPropsType = {
