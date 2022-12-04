@@ -14,7 +14,7 @@ type PropsType = {
     changeFilter: (value: FilterValuesType) => void
 }
 
-export function Todolist(props: PropsType) {
+export function ToDolist(props: PropsType) {
     return <div>
         <h3>{props.title}</h3>
         <div>
