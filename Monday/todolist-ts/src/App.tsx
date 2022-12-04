@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
-import {ToDolist} from "./ToDoList";
 import {v1} from "uuid";
+import {ToDoList} from "./ToDoList";
 
 export type FilterValuesType = "all" | "active" | "completed";
 
@@ -15,7 +15,7 @@ function App() {
         { id: v1(), title: "GraphQL", isDone: false },
     ]);
 
-    function removeTask(id: number) {
+    function removeTask(id: string) {
         let filteredTasks = tasks.filter(t => t.id !== id);
         setTasks(filteredTasks);
     }
@@ -36,7 +36,7 @@ function App() {
 
     return (
         <div className="App">
-            <ToDolist title="What to learn"
+            <ToDoList title="What to learn"
                       tasks={tasksForTodolist}
                       removeTask={removeTask}
                       changeFilter={changeFilter} />
