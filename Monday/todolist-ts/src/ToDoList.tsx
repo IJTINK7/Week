@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValuesType} from './App';
+import {Button} from "./Button";
 
 type TaskType = {
     id: string
@@ -60,6 +61,7 @@ export function ToDoList(props: PropsType) {
             <button onClick={ () => { props.changeFilter("completed") } }>
                 Completed
             </button>
+            <Button name={"New"} callBack={addTaskHandler}/>
         </div>
     </div>
 }
