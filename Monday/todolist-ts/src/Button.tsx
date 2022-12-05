@@ -8,8 +8,8 @@ export const Button = (props: ButtonType) =>{
 		props.callBack()
 	}
 	return(
-		<div>
+		<span>
 			<button onClick={activateCallBack} >{props.name}</button>
-		</div>
+		</span>
 	);
 }
