@@ -36,11 +36,8 @@ export function ToDoList(props: PropsType) {
     return <div>
         <h3>{props.title}</h3>
         <div>
-            <input value={inputValue}
-                   onChange={onChangeInputHandler}
-                   onKeyPress={onKeyPressHandler}
-            />
-            <button onClick={addTaskHandler}>+</button>
+            <input value={inputValue} onChange={onChangeInputHandler} onKeyPress={onKeyPressHandler}/>
+            <Button name={"+"} callBack={addTaskHandler}/>
         </div>
         <ul>
             {
@@ -52,9 +49,9 @@ export function ToDoList(props: PropsType) {
             }
         </ul>
         <div>
-            <Button name={"All"} callBack={() => { props.changeFilter("all") }}/>
-            <Button name={"Active"} callBack={() => { props.changeFilter("active") }}/>
-            <Button name={"Completed"} callBack={() => { props.changeFilter("completed") }}/>
+            <Button name={"All"} callBack={() => {props.changeFilter("all")}}/>
+            <Button name={"Active"} callBack={() => {props.changeFilter("active")}}/>
+            <Button name={"Completed"} callBack={() => {props.changeFilter("completed")}}/>
         </div>
     </div>
 }
