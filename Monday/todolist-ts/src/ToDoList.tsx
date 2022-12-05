@@ -52,16 +52,9 @@ export function ToDoList(props: PropsType) {
             }
         </ul>
         <div>
-            <button onClick={ () => { props.changeFilter("all") } }>
-                All
-            </button>
-            <button onClick={ () => { props.changeFilter("active") } }>
-                Active
-            </button>
-            <button onClick={ () => { props.changeFilter("completed") } }>
-                Completed
-            </button>
-            <Button name={"New"} callBack={addTaskHandler}/>
+            <Button name={"All"} callBack={() => { props.changeFilter("all") }}/>
+            <Button name={"Active"} callBack={() => { props.changeFilter("active") }}/>
+            <Button name={"Completed"} callBack={() => { props.changeFilter("completed") }}/>
         </div>
     </div>
 }

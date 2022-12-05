@@ -5,7 +5,7 @@ type ButtonType ={
 }
 export const Button = (props: ButtonType) =>{
 	const activateCallBack = () => {
-		console.log('Activate')
+		props.callBack()
 	}
 	return(
 		<div>
