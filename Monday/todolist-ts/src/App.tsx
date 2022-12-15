@@ -40,8 +40,8 @@ function App() {
   function changeFilter(value: FilterValuesType) {
     setFilter(value);
   }
-  const changeCheckBox=()=>{
-    console.log("Hi")
+  const changeCheckBox=(taskId: string, eventValue: boolean)=>{
+    setTasks(tasks.map(el=>el.id === taskId ? {...el, isDone: eventValue}: el));
   }
 
   return (
