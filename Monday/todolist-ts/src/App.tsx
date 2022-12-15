@@ -40,8 +40,9 @@ function App() {
   function changeFilter(value: FilterValuesType) {
     setFilter(value);
   }
-
-
+  const changeCheckBox=()=>{
+    console.log("Hi")
+  }
 
   return (
       <div className="App">
@@ -49,7 +50,8 @@ function App() {
                   tasks={tasksForTodolist}
                   removeTask={removeTask}
                   changeFilter={changeFilter}
-                  addTask={addTask} />
+                  addTask={addTask}
+                  changeCheckBox={changeCheckBox}/>
       </div>
   );
 }
