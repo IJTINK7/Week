@@ -19,9 +19,10 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
 
-	let [title, setTitle] = useState("")
-	const [error, setError] = useState(false)
-	const [errorMessage, setErrorMessage] = useState('')
+	const [title, setTitle] = useState("");
+	const [error, setError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
+	const [activeButton, setActiveButton] = useState('all');
 	const addTask = () => {
 		if(title.trim() === ''){
 			setError(true)
@@ -46,9 +47,18 @@ export function Todolist(props: PropsType) {
 		}
 	}
 
-	const onAllClickHandler = () => props.changeFilter("all");
-	const onActiveClickHandler = () => props.changeFilter("active");
-	const onCompletedClickHandler = () => props.changeFilter("completed");
+	const onAllClickHandler = () => {
+		props.changeFilter("all");
+		setActiveButton("all");
+	}
+	const onActiveClickHandler = () => {
+		props.changeFilter("active");
+		setActiveButton("active");
+	}
+	const onCompletedClickHandler = () => {
+		props.changeFilter("completed");
+		setActiveButton("completed");
+	}
 
 	return <div>
 		<h3>{props.title}</h3>
@@ -59,7 +69,7 @@ export function Todolist(props: PropsType) {
 				   onKeyPress={ onKeyPressHandler }
 			/>
 			<button onClick={addTask}>+</button>
-			<div className={style.errorMessage}>{errorMessage}</div>
+			{ error && <div className={style.errorMessage}>{errorMessage}</div>}
 		</div>
 		<ul>
 			{
@@ -79,9 +89,9 @@ export function Todolist(props: PropsType) {
 			}
 		</ul>
 		<div>
-			<button onClick={ onAllClickHandler }>All</button>
-			<button onClick={ onActiveClickHandler }>Active</button>
-			<button onClick={ onCompletedClickHandler }>Completed</button>
+			<button className={activeButton === 'all' ? style.activeFilter: ''} onClick={ onAllClickHandler }>All</button>
+			<button className={activeButton === 'active' ? style.activeFilter: ''} onClick={ onActiveClickHandler }>Active</button>
+			<button className={activeButton === 'completed' ? style.activeFilter: ''} onClick={ onCompletedClickHandler }>Completed</button>
 		</div>
 	</div>
 }
