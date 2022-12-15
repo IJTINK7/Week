@@ -62,6 +62,14 @@ export function Todolist(props: PropsType) {
 	const onChangeCheckBoxHandler =(eventValue: boolean, elId:string)=>{
 		props.changeCheckBox( elId, eventValue)
 	}
+	const mapData = props.tasks.map(t => {
+			const onClickHandler = () => props.removeTask(t.id);
+			return <li key={t.id}>
+				<input type="checkbox" checked={t.isDone} onChange={(e)=>{onChangeCheckBoxHandler(e.currentTarget.checked, t.id)}}/>
+				<span className={t.isDone ? style.isDone : ""}>{t.title}</span>
+				<button onClick={ onClickHandler }>x</button>
+			</li>
+	});
 
 	return <div>
 		<h3>{props.title}</h3>
@@ -75,18 +83,7 @@ export function Todolist(props: PropsType) {
 			{ error && <div className={style.errorMessage}>{errorMessage}</div>}
 		</div>
 		<ul>
-			{
-				props.tasks.map(t => {
-
-					const onClickHandler = () => props.removeTask(t.id)
-
-					return <li key={t.id}>
-						<input type="checkbox" checked={t.isDone} onChange={(e)=>{onChangeCheckBoxHandler(e.currentTarget.checked, t.id)}}/>
-						<span className={t.isDone ? style.isDone : ""}>{t.title}</span>
-						<button onClick={ onClickHandler }>x</button>
-					</li>
-				})
-			}
+			{mapData}
 		</ul>
 		<div>
 			<button className={activeButton === 'all' ? style.activeFilter: ''} onClick={ onAllClickHandler }>All</button>
