@@ -17,8 +17,14 @@ function App() {
     ]
   return (
     <div className="App">
-      <ToDoList />
-      <ToDoList />
+      <ToDoList
+        title = {"What to learn"}
+        tasks = {tasks}
+      />
+      <ToDoList
+          title = {"James Cameron's movies"}
+          tasks = {movies}
+      />
     </div>
   );
 }
