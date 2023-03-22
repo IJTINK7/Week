@@ -4,6 +4,7 @@ type PropsType = {
 	title: string;
 	tasks: Array<TasksType>;
 	removeTask: Function;
+	changeFilter: Function;
 }
 export type TasksType ={
 	id: number;
@@ -26,9 +27,9 @@ export const ToDoList = (props: PropsType) => {
 				</li>)}
 			</ul>
 			<div>
-				<button>All</button>
-				<button>Active</button>
-				<button>Complete</button>
+				<button onClick={()=>{props.changeFilter('all')}}>All</button>
+				<button onClick={()=>{props.changeFilter('active')}}>Active</button>
+				<button onClick={()=>{props.changeFilter('completed')}}>Complete</button>
 			</div>
 		</div>
 	);
