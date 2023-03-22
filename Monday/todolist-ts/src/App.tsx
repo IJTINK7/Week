@@ -10,7 +10,8 @@ function App() {
         {id: 4, title: "React", isDone: false},
     ])
     const removeTask = (id: number) => {
-        tasks = tasks.filter(el=> el.id !== id)
+        let filteredTasks = tasks.filter(el=> el.id !== id)
+        setTasks(filteredTasks)
     }
   return (
     <div className="App">
