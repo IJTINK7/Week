@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './App.css';
 import {ToDoList} from "./ToDoList";
 
+type FilterValuesType = "all" | "completed" | "active"
+
 function App() {
     let [tasks, setTasks] = useState([
         {id: 1, title: "HTML", isDone: true},
@@ -9,7 +11,7 @@ function App() {
         {id: 3, title: "JS", isDone: true},
         {id: 4, title: "React", isDone: false},
     ])
-    let [filter, setFilter] = useState("all");
+    let [filter, setFilter] = useState<FilterValuesType>("all");
 
     const removeTask = (id: number) => {
         let filteredTasks = tasks.filter(el=> el.id !== id)
