@@ -1,10 +1,11 @@
 import React from "react";
+import {FilterValuesType} from "./App";
 
 type PropsType = {
 	title: string;
 	tasks: Array<TasksType>;
 	removeTask: Function;
-	changeFilter: Function;
+	changeFilter: (value: FilterValuesType)=> void;
 }
 export type TasksType ={
 	id: number;

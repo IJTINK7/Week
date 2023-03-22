@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {TasksType, ToDoList} from "./ToDoList";
 
-type FilterValuesType = "all" | "completed" | "active"
+export type FilterValuesType = "all" | "completed" | "active"
 
 function App() {
     let [tasks, setTasks] = useState<Array<TasksType>>([
