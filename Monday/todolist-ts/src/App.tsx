@@ -23,8 +23,8 @@ function App() {
         setFilter(value)
     }
 
-    const addTask = () => {
-        let newTask = {id: v1(), title: "New Task", isDone: false}
+    const addTask = (newTaskTitle: string) => {
+        let newTask = {id: v1(), title: newTaskTitle, isDone: false}
         let newTasks = [newTask, ...tasks]
         setTasks(newTasks)
     }
