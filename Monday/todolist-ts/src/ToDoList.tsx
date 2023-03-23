@@ -1,5 +1,4 @@
-
-import React, {useState} from "react";
+import React, {ChangeEvent,KeyboardEvent, useState} from "react";
 import {FilterValuesType} from "./App";
 
 type PropsType = {
@@ -17,18 +16,29 @@ export type TasksType ={
 
 export const ToDoList = (props: PropsType) => {
 	let [newTaskTitle, setNewTaskTitle] = useState("");
+	const onNewTaskChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+		setNewTaskTitle(e.currentTarget.value)
+	}
+	const onKeyPressHandler= (e: KeyboardEvent<HTMLInputElement>) => {
+		if(e.ctrlKey && e.charCode === 13){
+			props.addTask(newTaskTitle)
+			setNewTaskTitle("")
+		}
+	}
+	const addTaskHandler = () => {
+		props.addTask(newTaskTitle)
+		setNewTaskTitle("")
+	}
 	return (
 		<div>
 			<h3>{props.title}</h3>
 			<div>
 				<input
 					value={newTaskTitle}
-					onChange={(e)=>{setNewTaskTitle(e.currentTarget.value)}}
+					onChange={onNewTaskChangeHandler}
+					onKeyPress={onKeyPressHandler}
 				/>
-				<button onClick={()=>{
-					props.addTask(newTaskTitle)
-					setNewTaskTitle("")
-				}}>+</button>
+				<button onClick={addTaskHandler}>+</button>
 			</div>
 			<ul>
 				{props.tasks.map(el=> <li key={el.id}><input type="checkbox" checked={el.isDone}/>
@@ -149,7 +159,7 @@ export const ToDoList = (props: PropsType) => {
 // 			setNewTaskTitle("")
 // 		}
 // 	}
-// 	const addTask = () => {
+// 	const addTaskHandler = () => {
 // 		props.addTask(newTaskTitle)
 // 		setNewTaskTitle("")
 // 	}
@@ -165,7 +175,7 @@ export const ToDoList = (props: PropsType) => {
 // 					onChange={onNewTitleChangeHandler}
 // 					onKeyPress={onKeyPressHandler}
 // 				/>
-// 				<button onClick={addTask}>+</button>
+// 				<button onClick={addTaskHandler}>+</button>
 // 			</div>
 // 			<ul>
 // 				{props.tasks.map(el => {
