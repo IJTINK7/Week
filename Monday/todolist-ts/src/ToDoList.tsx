@@ -44,13 +44,13 @@ export const ToDoList = (props: PropsType) => {
 				<button onClick={addTask}>+</button>
 			</div>
 			<ul>
-				{props.tasks.map(el => <li key={el.id}><input type="checkbox" checked={el.isDone}/>
-					<span>{el.title}</span>
-					<button onClick={() => {
-						props.removeTask(el.id)
-					}}>x
-					</button>
-				</li>)}
+				{props.tasks.map(el => {
+					const onRemoveHandler = () => props.removeTask(el.id)
+					return <li key={el.id}><input type="checkbox" checked={el.isDone}/>
+						<span>{el.title}</span>
+						<button onClick={onRemoveHandler}>x
+						</button>
+					</li>})}
 			</ul>
 			<div>
 				<button onClick={onAllClickHandler}>All
