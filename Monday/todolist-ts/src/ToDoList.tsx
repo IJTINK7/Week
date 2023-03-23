@@ -21,7 +21,12 @@ export const ToDoList = (props: PropsType) => {
 			<h3>{props.title}</h3>
 			<div>
 				<input value={newTaskTitle} onChange={(e)=>{setNewTaskTitle(e.currentTarget.value)}} />
-				<button onClick={()=>{props.addTask(newTaskTitle)}}>+</button>
+				<button
+					onClick={()=>{
+						props.addTask(newTaskTitle)
+						setNewTaskTitle("")
+					}}
+				>+</button>
 			</div>
 			<ul>
 				{props.tasks.map(el=> <li key={el.id}><input type="checkbox" checked={el.isDone}/>
