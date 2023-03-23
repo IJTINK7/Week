@@ -7,6 +7,7 @@ type PropsType = {
 	tasks: Array<TasksType>;
 	removeTask: Function;
 	changeFilter: (value: FilterValuesType)=> void;
+	addTask: ()=> void;
 }
 export type TasksType ={
 	id: string;
@@ -20,7 +21,7 @@ export const ToDoList = (props: PropsType) => {
 			<h3>{props.title}</h3>
 			<div>
 				<input />
-				<button>+</button>
+				<button onClick={()=>{props.addTask()}}>+</button>
 			</div>
 			<ul>
 				{props.tasks.map(el=> <li><input type="checkbox" checked={el.isDone}/>
