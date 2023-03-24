@@ -17,6 +17,7 @@ export type TasksType = {
 
 export const ToDoList = (props: PropsType) => {
 	let [newTaskTitle, setNewTaskTitle] = useState("")
+	let [error, setError] = useState< null | string>(null)
 	const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		setNewTaskTitle(e.currentTarget.value)
 	}
@@ -27,11 +28,12 @@ export const ToDoList = (props: PropsType) => {
 		}
 	}
 	const addTaskHandler = () => {
-		if(newTaskTitle.trim() === ""){
-			return
+		if(newTaskTitle.trim() !== ""){
+			props.addTask(newTaskTitle.trim())
+			setNewTaskTitle("")
+		}else{
+			setError("Field is required")
 		}
-		props.addTask(newTaskTitle.trim())
-		setNewTaskTitle("")
 	}
 	const onAllClickHandler = () => props.changeFilter("all");
 	const onCompletedClickHandler = () => props.changeFilter("completed");
@@ -45,8 +47,10 @@ export const ToDoList = (props: PropsType) => {
 					value={newTaskTitle}
 					onChange={onNewTitleChangeHandler}
 					onKeyPress={onKeyPressHandler}
+					className={error ? "error" : ""}
 				/>
 				<button onClick={addTaskHandler}>+</button>
+				{error && <div className={"error-message"}>{error}</div>}
 			</div>
 			<ul>
 				{props.tasks.map(el => {
