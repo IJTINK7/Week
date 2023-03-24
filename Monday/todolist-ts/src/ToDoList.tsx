@@ -27,7 +27,10 @@ export const ToDoList = (props: PropsType) => {
 		}
 	}
 	const addTaskHandler = () => {
-		props.addTask(newTaskTitle)
+		if(newTaskTitle.trim() === ""){
+			return
+		}
+		props.addTask(newTaskTitle.trim())
 		setNewTaskTitle("")
 	}
 	const onAllClickHandler = () => props.changeFilter("all");
