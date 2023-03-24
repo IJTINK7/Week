@@ -200,3 +200,67 @@ export default App;
 // }
 //
 // export default App;
+
+//Todolist 04
+// import React, {useState} from 'react';
+// import './App.css';
+// import {TasksType, ToDoList} from "./ToDoList";
+// import {v1} from "uuid";
+//
+// export type FilterValuesType = "all" | "completed" | "active"
+//
+// function App() {
+// 	let [tasks, setTasks] = useState<Array<TasksType>>([
+// 		{id: v1(), title: "HTML", isDone: true},
+// 		{id: v1(), title: "CSS", isDone: true},
+// 		{id: v1(), title: "JS", isDone: true},
+// 		{id: v1(), title: "React", isDone: false},
+// 	])
+// 	let [filter, setFilter] = useState<FilterValuesType>("all");
+//
+// 	const removeTask = (id: string) => {
+// 		let filteredTasks = tasks.filter(el => el.id !== id)
+// 		setTasks(filteredTasks)
+// 	}
+//
+// 	const changeFilter = (value: FilterValuesType) => {
+// 		setFilter(value)
+// 	}
+//
+// 	const addTask = (newTaskTitle: string) => {
+// 		let newTask = {id: v1(), title: newTaskTitle, isDone: false}
+// 		let newTasks = [newTask, ...tasks]
+// 		setTasks(newTasks)
+// 	}
+// 	const changeTaskStatus = (taskId: string, isDone: boolean) => {
+// 		let task = tasks.find(el => el.id === taskId)
+// 		if (task) {
+// 			task.isDone = isDone;
+// 		}
+// 		setTasks([...tasks])
+// 	}
+//
+// 	let tasksForTodolist = tasks;
+// 	if (filter === "completed") {
+// 		tasksForTodolist = tasks.filter(el => el.isDone)
+// 	}
+// 	if (filter === "active") {
+// 		tasksForTodolist = tasks.filter(el => !el.isDone)
+// 	}
+//
+// 	return (
+// 		<div className="App">
+// 			<ToDoList
+// 				title={"What to learn"}
+// 				tasks={tasksForTodolist}
+// 				removeTask={removeTask}
+// 				changeFilter={changeFilter}
+// 				addTask={addTask}
+// 				changeTaskStatus={changeTaskStatus}
+// 				filter={filter}
+// 			/>
+// 		</div>
+// 	);
+// }
+//
+// export default App;
