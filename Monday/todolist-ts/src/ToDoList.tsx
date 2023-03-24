@@ -22,6 +22,7 @@ export const ToDoList = (props: PropsType) => {
 		setNewTaskTitle(e.currentTarget.value)
 	}
 	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+		setError(null)
 		if (e.ctrlKey && e.charCode === 13) {
 			props.addTask(newTaskTitle)
 			setNewTaskTitle("")
