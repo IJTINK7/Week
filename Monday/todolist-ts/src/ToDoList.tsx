@@ -2,10 +2,11 @@ import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType} from "./App";
 
 type PropsType = {
+	id:string;
 	title: string;
 	tasks: Array<TasksType>;
 	removeTask: (taskId: string) => void;
-	changeFilter: (value: FilterValuesType) => void;
+	changeFilter: (todolistId: string, value: FilterValuesType) => void;
 	addTask: (newTaskTitle: string) => void;
 	changeTaskStatus: (taskId: string, isDone: boolean) => void;
 	filter: FilterValuesType;
@@ -37,9 +38,9 @@ export const ToDoList = (props: PropsType) => {
 			setError("Field is required")
 		}
 	}
-	const onAllClickHandler = () => props.changeFilter("all");
-	const onCompletedClickHandler = () => props.changeFilter("completed");
-	const onActiveClickHandler = () => props.changeFilter("active");
+	const onAllClickHandler = () => props.changeFilter(props.id, "all");
+	const onCompletedClickHandler = () => props.changeFilter(props.id,"completed");
+	const onActiveClickHandler = () => props.changeFilter(props.id,"active");
 
 	return (
 		<div>
