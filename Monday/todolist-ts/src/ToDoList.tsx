@@ -4,14 +4,14 @@ import {FilterValuesType} from "./App";
 type PropsType = {
 	id:string;
 	title: string;
-	tasks: Array<TasksType>;
+	tasks: Array<TaskType>;
 	removeTask: (taskId: string) => void;
 	changeFilter: (todolistId: string, value: FilterValuesType) => void;
 	addTask: (newTaskTitle: string) => void;
 	changeTaskStatus: (taskId: string, isDone: boolean) => void;
 	filter: FilterValuesType;
 }
-export type TasksType = {
+export type TaskType = {
 	id: string;
 	title: string;
 	isDone: boolean;
