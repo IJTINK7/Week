@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import {TasksType, ToDoList} from "./ToDoList";
+import {TaskType, ToDoList} from "./ToDoList";
 import {v1} from "uuid";
 
 export type FilterValuesType = "all" | "completed" | "active"
@@ -9,22 +9,45 @@ type TodolistType={
 	title: string;
 	filter: FilterValuesType;
 }
+type TasksType={
+	[key:string]: Array<TaskType>
+}
 
 function App() {
+
+	let todolistID1 = v1();
+	let todolistID2 = v1();
+
 	let [todolists,setTodolists] = useState<Array<TodolistType>>([
-		{id: v1(), title: "What to learn", filter: "active"},
-		{id: v1(), title: "What to buy", filter: "completed"}
+		{id: todolistID1, title: "What to learn", filter: "active"},
+		{id: todolistID2, title: "What to buy", filter: "completed"}
 	]);
 
-	let [tasks, setTasks] = useState<Array<TasksType>>([
-		{id: v1(), title: "HTML", isDone: true},
-		{id: v1(), title: "CSS", isDone: true},
-		{id: v1(), title: "JS", isDone: true},
-		{id: v1(), title: "React", isDone: false},
-	])
+	let [tasks, setTasks] = useState<TasksType>({
+		[todolistID1]:[
+			{id: v1(), title: "HTML", isDone: true},
+			{id: v1(), title: "CSS", isDone: true},
+			{id: v1(), title: "JS", isDone: true},
+			{id: v1(), title: "React", isDone: false},
+		],
+		[todolistID2]:[
+			{id: v1(), title: "HTML2", isDone: true},
+			{id: v1(), title: "CSS2", isDone: true},
+			{id: v1(), title: "JS2", isDone: true},
+			{id: v1(), title: "React2", isDone: false},
+		]
+	})
+
+	// let [tasks, setTasks] = useState<Array<TasksType>>([
+	// 	{id: v1(), title: "HTML", isDone: true},
+	// 	{id: v1(), title: "CSS", isDone: true},
+	// 	{id: v1(), title: "JS", isDone: true},
+	// 	{id: v1(), title: "React", isDone: false},
+	// ])
+
 	const removeTask = (id: string) => {
-		let filteredTasks = tasks.filter(el => el.id !== id)
-		setTasks(filteredTasks)
+		// let filteredTasks = tasks.filter(el => el.id !== id)
+		// setTasks(filteredTasks)
 	}
 
 	const changeFilter = (todolistId: string, value: FilterValuesType) => {
@@ -32,16 +55,16 @@ function App() {
 	}
 
 	const addTask = (newTaskTitle: string) => {
-		let newTask = {id: v1(), title: newTaskTitle, isDone: false}
-		let newTasks = [newTask, ...tasks]
-		setTasks(newTasks)
+		// let newTask = {id: v1(), title: newTaskTitle, isDone: false}
+		// let newTasks = [newTask, ...tasks]
+		// setTasks(newTasks)
 	}
 	const changeTaskStatus = (taskId: string, isDone: boolean) => {
-		let task = tasks.find(el => el.id === taskId)
-		if (task) {
-			task.isDone = isDone;
-		}
-		setTasks([...tasks])
+		// let task = tasks.find(el => el.id === taskId)
+		// if (task) {
+		// 	task.isDone = isDone;
+		// }
+		// setTasks([...tasks])
 	}
 
 
