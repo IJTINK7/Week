@@ -8,7 +8,7 @@ type PropsType = {
 	removeTask: (todolistId: string, taskId:string) => void;
 	changeFilter: (todolistId: string, value: FilterValuesType) => void;
 	addTask: (todolistId: string, newTaskTitle: string) => void;
-	changeTaskStatus: (taskId: string, isDone: boolean) => void;
+	changeTaskStatus: (todolistId: string, taskId: string, isDone: boolean) => void;
 	filter: FilterValuesType;
 }
 export type TaskType = {
@@ -58,7 +58,7 @@ export const ToDoList = (props: PropsType) => {
 			<ul>
 				{props.tasks.map(el => {
 					const onRemoveHandler = () => props.removeTask(props.id, el.id)
-					const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(el.id, e.currentTarget.checked);
+					const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(props.id, el.id, e.currentTarget.checked);
 					return <li key={el.id}
 							   className={el.isDone ? "is-done" : ""}
 					>
