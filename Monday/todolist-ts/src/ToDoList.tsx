@@ -7,7 +7,7 @@ type PropsType = {
 	tasks: Array<TaskType>;
 	removeTask: (todolistId: string, taskId:string) => void;
 	changeFilter: (todolistId: string, value: FilterValuesType) => void;
-	addTask: (newTaskTitle: string) => void;
+	addTask: (todolistId: string, newTaskTitle: string) => void;
 	changeTaskStatus: (taskId: string, isDone: boolean) => void;
 	filter: FilterValuesType;
 }
@@ -26,13 +26,13 @@ export const ToDoList = (props: PropsType) => {
 	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
 		setError(null)
 		if (e.ctrlKey && e.charCode === 13) {
-			props.addTask(newTaskTitle)
+			props.addTask(props.id, newTaskTitle)
 			setNewTaskTitle("")
 		}
 	}
 	const addTaskHandler = () => {
 		if(newTaskTitle.trim() !== ""){
-			props.addTask(newTaskTitle.trim())
+			props.addTask(props.id, newTaskTitle.trim())
 			setNewTaskTitle("")
 		}else{
 			setError("Field is required")
