@@ -44,7 +44,10 @@ export const ToDoList = (props: PropsType) => {
 
 	return (
 		<div>
-			<h3>{props.title}</h3>
+				<h3>
+					{props.title}
+					<button>x</button>
+				</h3>
 			<div>
 				<input
 					value={newTaskTitle}
