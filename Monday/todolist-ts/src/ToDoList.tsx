@@ -70,6 +70,11 @@ type AddItemFormPropsType = {
 	id: string;
 }
 const AddItemForm =(props:AddItemFormPropsType) => {
+	let [newTaskTitle, setNewTaskTitle] = useState("")
+	let [error, setError] = useState<null | string>(null)
+	const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+		setNewTaskTitle(e.currentTarget.value)
+	}
 
 	return(
 		<div>
@@ -84,11 +89,6 @@ const AddItemForm =(props:AddItemFormPropsType) => {
 		</div>
 	);
 }
-
-
-
-
-
 
 // Todolist 01
 // import React from "react";
