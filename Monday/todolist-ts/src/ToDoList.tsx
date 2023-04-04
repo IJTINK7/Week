@@ -82,7 +82,14 @@ const AddItemForm =(props:AddItemFormPropsType) => {
 			setNewTaskTitle("")
 		}
 	}
-
+	const addTaskHandler = () => {
+		if (newTaskTitle.trim() !== "") {
+			props.addTask(props.id, newTaskTitle.trim())
+			setNewTaskTitle("")
+		} else {
+			setError("Field is required")
+		}
+	}
 	return(
 		<div>
 			<input
