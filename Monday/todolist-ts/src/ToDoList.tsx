@@ -75,6 +75,13 @@ const AddItemForm =(props:AddItemFormPropsType) => {
 	const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		setNewTaskTitle(e.currentTarget.value)
 	}
+	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+		setError(null)
+		if (e.ctrlKey && e.charCode === 13) {
+			props.addTask(props.id, newTaskTitle)
+			setNewTaskTitle("")
+		}
+	}
 
 	return(
 		<div>
