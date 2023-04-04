@@ -69,6 +69,21 @@ type AddItemFormPropsType = {
 	addTask: (todolistId: string, newTaskTitle: string) => void;
 	id: string;
 }
+const AddItemForm =(props:AddItemFormPropsType) => {
+
+	return(
+		<div>
+			<input
+				value={newTaskTitle}
+				onChange={onNewTitleChangeHandler}
+				onKeyPress={onKeyPressHandler}
+				className={error ? "error" : ""}
+			/>
+			<button onClick={addTaskHandler}>+</button>
+			{error && <div className={"error-message"}>{error}</div>}
+		</div>
+	);
+}
 
 
 
