@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from "react";
 import {FilterValuesType} from "./App";
 import {AddItemForm} from "./AddItemForm";
+import {EditableSpan} from "./EditableSpan";
 
 type PropsType = {
 	id: string;
@@ -48,7 +49,7 @@ export const ToDoList = (props: PropsType) => {
 							type="checkbox"
 							onChange={onChangeHandler}
 							checked={el.isDone}/>
-						<span>{el.title}</span>
+						<EditableSpan title={el.title}/>
 						<button onClick={onRemoveHandler}>x
 						</button>
 					</li>
