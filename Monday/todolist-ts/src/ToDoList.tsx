@@ -34,7 +34,7 @@ export const ToDoList = (props: PropsType) => {
 				{props.title}
 				<button onClick={removeToDoListHandler}>x</button>
 			</h3>
-			<AddItemForm id={props.id} addTask={props.addTask}/>
+			<AddItemForm id={props.id} addItem={props.addTask}/>
 			<ul>
 				{props.tasks.map(el => {
 					const onRemoveHandler = () => props.removeTask(props.id, el.id)
