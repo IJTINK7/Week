@@ -70,6 +70,11 @@ function App() {
 		setTodolists(todolists.filter(el => el.id !== todolistId))
 		delete tasks[todolistId]
 	}
+
+	const changeTodolistTitle = (todolistId: string, newTitle: string) => {
+		setTodolists(todolists.map(el => el.id === todolistId ? {...el, title: newTitle} : el))
+	}
+
 	const addTodolist = (title: string) => {
 		let newTodolist: TodolistType = {id: v1(), title: title, filter: "all"};
 		setTodolists([newTodolist, ...todolists]);
@@ -99,6 +104,7 @@ function App() {
 						changeTaskTitle={changeTaskTitle}
 						filter={el.filter}
 						removeToDoList={removeToDoList}
+						changeTodolistTitle={changeTodolistTitle}
 					/>
 				})
 			}
