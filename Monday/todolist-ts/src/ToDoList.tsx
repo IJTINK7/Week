@@ -33,7 +33,7 @@ export const ToDoList = (props: PropsType) => {
 	const changeTodolistTitle = (title: string) => {
 		props.changeTodolistTitle(props.id, title);
 	}
-	const addTask = (title: string) =>{
+	const addTask = (title: string) => {
 		props.addTask(props.id, title)
 	}
 	return (
@@ -47,7 +47,7 @@ export const ToDoList = (props: PropsType) => {
 				{props.tasks.map(el => {
 					const onRemoveHandler = () => props.removeTask(props.id, el.id)
 					const onChangeStatusHandler = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(props.id, el.id, e.currentTarget.checked);
-					const onChangeTitleHandler = (newValue:string) => props.changeTaskTitle(props.id,el.id, newValue);
+					const onChangeTitleHandler = (newValue: string) => props.changeTaskTitle(props.id, el.id, newValue);
 					return <li key={el.id}
 							   className={el.isDone ? "is-done" : ""}
 					>
