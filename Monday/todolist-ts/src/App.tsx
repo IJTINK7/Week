@@ -66,10 +66,14 @@ function App() {
 		setTodolists(todolists.filter(el => el.id !== todolistId))
 		delete tasks[todolistId]
 	}
-
+	const addTodolist = (title: string) => {
+		let newTodolist: TodolistType = {id: v1(), title: title, filter: "all"};
+		setTodolists([newTodolist, ...todolists]);
+		setTasks({...tasks, [newTodolist.id]:[]})
+	}
 	return (
 		<div className="App">
-			<AddItemForm addItem={()=>{}}/>
+			<AddItemForm addItem={addTodolist}/>
 			{
 				todolists.map(el => {
 					let tasksForTodolist = tasks[el.id];
