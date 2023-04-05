@@ -11,6 +11,7 @@ type PropsType = {
 	changeFilter: (todolistId: string, value: FilterValuesType) => void;
 	addTask: (todolistId: string, newTaskTitle: string) => void;
 	changeTaskStatus: (todolistId: string, taskId: string, isDone: boolean) => void;
+	changeTaskTitle: (todolistId: string, taskId: string, newValue: string) => void;
 	filter: FilterValuesType;
 	removeToDoList: (todolistId: string) => void;
 }
@@ -41,15 +42,16 @@ export const ToDoList = (props: PropsType) => {
 			<ul>
 				{props.tasks.map(el => {
 					const onRemoveHandler = () => props.removeTask(props.id, el.id)
-					const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(props.id, el.id, e.currentTarget.checked);
+					const onChangeStatusHandler = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(props.id, el.id, e.currentTarget.checked);
+					const onChangeTitleHandler = (newValue:string) => props.changeTaskTitle(props.id,el.id, newValue);
 					return <li key={el.id}
 							   className={el.isDone ? "is-done" : ""}
 					>
 						<input
 							type="checkbox"
-							onChange={onChangeHandler}
+							onChange={onChangeStatusHandler}
 							checked={el.isDone}/>
-						<EditableSpan title={el.title}/>
+						<EditableSpan title={el.title} onChange={onChangeTitleHandler}/>
 						<button onClick={onRemoveHandler}>x
 						</button>
 					</li>
