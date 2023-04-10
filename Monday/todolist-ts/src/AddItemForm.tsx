@@ -1,16 +1,7 @@
 import React from "react";
-	export const addTaskHandler = () => {
+export const addTaskHandler = () => {
 	return (
-		<div>
-			<input
-				value={newTaskTitle}
-				onChange={onNewTitleChangeHandler}
-				onKeyPress={onKeyPressHandler}
-				className={error ? "error" : ""}
-			/>
-			<button onClick={addTaskHandler}>+</button>
-			{error && <div className={"error-message"}>{error}</div>}
-		</div>
+		<div>Hi</div>
 	);
 }
 
