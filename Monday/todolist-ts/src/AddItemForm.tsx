@@ -1,5 +1,11 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
-export const AddItemForm = () => {
+
+type PropsType ={
+	addTask: (todolistId: string, newTaskTitle: string) => void;
+	todolistId: string
+}
+
+export const AddItemForm = (props: PropsType) => {
 	let [newTaskTitle, setNewTaskTitle] = useState("")
 	let [error, setError] = useState<null | string>(null);
 	const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -8,13 +14,13 @@ export const AddItemForm = () => {
 	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
 		setError(null)
 		if (e.ctrlKey && e.charCode === 13) {
-			props.addTask(props.id, newTaskTitle)
+			props.addTask(props.todolistId, newTaskTitle)
 			setNewTaskTitle("")
 		}
 	}
 	const addTaskHandler = () => {
 		if (newTaskTitle.trim() !== "") {
-			props.addTask(props.id, newTaskTitle.trim())
+			props.addTask(props.todolistId, newTaskTitle.trim())
 			setNewTaskTitle("")
 		} else {
 			setError("Field is required")
