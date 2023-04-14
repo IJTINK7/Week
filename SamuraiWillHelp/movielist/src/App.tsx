@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import {v1} from "uuid";
+import {WatchList} from "./components/WatchList";
 
 function App() {
     const [movies, setMovies] = useState([
@@ -12,21 +13,14 @@ function App() {
         {id: v1(), name: 'The Lord of the Rings', watched: false, rating: 89},
         {id: v1(), name: 'Pulp Fiction', watched: false, rating: 89}
     ])
-    const watchList = movies.map(el => {
-        return (
-            <li key={el.id}>
-                <input type="checkbox" checked={el.watched}/>
-                {`${el.name}---${el.rating}`}
-            </li>
-        )
-    })
+
   return (
     <div className="App">
       <header className="App-header">
         <div className="main">
-            <ul>
-                {watchList}
-            </ul>
+                <WatchList
+                    movies={movies}
+                />
         </div>
       </header>
     </div>
