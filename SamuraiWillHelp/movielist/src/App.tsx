@@ -12,10 +12,22 @@ function App() {
         {id: v1(), name: 'The Lord of the Rings', watched: false, rating: 89},
         {id: v1(), name: 'Pulp Fiction', watched: false, rating: 89}
     ])
+    const watchList = movies.map(el => {
+        return (
+            <li key={el.id}>
+                <input type="checkbox" checked={el.watched}/>
+                {`${el.name}---${el.rating}`}
+            </li>
+        )
+    })
   return (
     <div className="App">
       <header className="App-header">
-        <div className="main">{movies[0].name}</div>
+        <div className="main">
+            <ul>
+                {watchList}
+            </ul>
+        </div>
       </header>
     </div>
   );
