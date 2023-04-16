@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {v1} from "uuid";
 import {Watchlist} from "./components/WatchList";
-import FilterMovies from "./components/FilterMovies";
+import {FilterMovies} from "./components/FilterMovies";
 
 function App() {
 	const title = 'Best movies'
@@ -15,6 +15,10 @@ function App() {
 		{id: v1(), name: 'The Lord of the Rings', watched: false, rating: 89, genre: "Fantasy"},
 		{id: v1(), name: ' Pulp Fiction', watched: false, rating: 89, genre: "Crime"}
 	])
+	const [filter, setFilter] = useState("All");
+	const genreFilter = (filterValue: string) => {
+		setFilter(filterValue)
+	}
 
 	function removeFilms(id: string) {
 		setMovies(movies.filter(el => el.id !== id))
@@ -23,7 +27,7 @@ function App() {
 	return (
 		<header className="App">
 			<div className={'main'}>
-				<FilterMovies/>
+				<FilterMovies filter={filter}/>
 				<ul>
 					<Watchlist
 						movies={movies}
