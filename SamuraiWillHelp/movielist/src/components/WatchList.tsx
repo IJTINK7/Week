@@ -1,4 +1,5 @@
 import React from 'react';
+import {AddForm} from "./AddForm";
 
 export type PropsType = {
 	movies: MovieType[]
@@ -32,6 +33,7 @@ export const Watchlist = (props: PropsType) => {
 					)
 				})}
 			</ul>
+			<AddForm/>
 		</>
 	);
 };
