@@ -24,7 +24,7 @@ function App() {
 		setMovies(movies.filter(el => el.id !== id))
 	}
 
-	const filteredMovies = movies.filter(el => filter === "All" ? el : el.genre === filter)
+	const filteredMovies = movies.filter(el => filter.toLowerCase() === "All".toLowerCase() ? el : el.genre.toLowerCase() === filter.toLowerCase())
 
 	return (
 		<header className="App">
