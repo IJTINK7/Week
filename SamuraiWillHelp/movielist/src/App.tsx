@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {v1} from "uuid";
 import {Watchlist} from "./components/WatchList";
+import FilterMovies from "./components/FilterMovies";
 
 function App() {
 	const title = 'Best movies'
@@ -22,6 +23,7 @@ function App() {
 	return (
 		<header className="App">
 			<div className={'main'}>
+				<FilterMovies/>
 				<ul>
 					<Watchlist
 						movies={movies}
