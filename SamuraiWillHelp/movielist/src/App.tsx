@@ -24,6 +24,8 @@ function App() {
 		setMovies(movies.filter(el => el.id !== id))
 	}
 
+	const filteredMovies = movies.filter(el => filter === "All" ? el : el.genre === filter)
+
 	return (
 		<header className="App">
 			<div className={'main'}>
@@ -33,7 +35,7 @@ function App() {
 				/>
 				<ul>
 					<Watchlist
-						movies={movies}
+						movies={filteredMovies}
 						title={title}
 						removeFilms={removeFilms}
 					/>
