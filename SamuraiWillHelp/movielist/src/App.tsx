@@ -27,7 +27,10 @@ function App() {
 	return (
 		<header className="App">
 			<div className={'main'}>
-				<FilterMovies filter={filter}/>
+				<FilterMovies
+					filter={filter}
+					genreFilter={genreFilter}
+				/>
 				<ul>
 					<Watchlist
 						movies={movies}

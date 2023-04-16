@@ -1,21 +1,25 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 
 type PropsType = {
-	filter: string
+	filter: string;
+	genreFilter: (filterValue: string) => void;
 }
 
 export const FilterMovies = (props: PropsType) => {
+	const genreFilterHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+		props.genreFilter(e.currentTarget.value)
+	}
 	return (
 		<div>
-			<select name="select">
-				<option value="all" >All Genre</option>
-				<option value="drama" >Drama</option>
-				<option value="crime">Crime</option>
-				<option value="action">Action</option>
-				<option value="military">Military</option>
-				<option value="fantasy">Fantasy</option>
+			<select onChange={genreFilterHandler}>
+				<option value="All" >All Genre</option>
+				<option value="Drama" >Drama</option>
+				<option value="Crime">Crime</option>
+				<option value="Action">Action</option>
+				<option value="Military">Military</option>
+				<option value="Fantasy">Fantasy</option>
 			</select>
-			<span>Selected genre: {props.filter}</span>
+			<span> Selected genre: {props.filter}</span>
 		</div>
 	);
 };
