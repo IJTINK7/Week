@@ -1,13 +1,21 @@
 import React from 'react';
 
-export const AddForm = () => {
+type AddFormType={
+	addFilm: () => void;
+}
+export const AddForm = (props: AddFormType) => {
+	const [filmTitle, setFilmTitle] = useState("");
+	const [filmTitle, setFilmTitle] = useState("");
+	const addFilmHandler = () => {
+		props.addFilm()
+	}
 	return (
 		<div>
 			<button>ADD FILM</button>
 			<div>
+				<input type="text" />
 				<input type="text"/>
-				<input type="text"/>
-				<button>ADD</button>
+				<button onClick={addFilmHandler}>ADD</button>
 			</div>
 		</div>
 	);

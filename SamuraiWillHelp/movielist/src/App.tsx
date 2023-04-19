@@ -3,6 +3,7 @@ import './App.css';
 import {v1} from "uuid";
 import {Watchlist} from "./components/WatchList";
 import {FilterMovies} from "./components/FilterMovies";
+import {AddForm} from "./components/AddForm";
 
 function App() {
 	const title = 'Best movies'
@@ -23,6 +24,10 @@ function App() {
 	function removeFilms(id: string) {
 		setMovies(movies.filter(el => el.id !== id))
 	}
+	const addFilm = () => {
+		let newFilm = {id: v1(), name: "Titanic", watched: false, rating: 98, genre: "Drama"};
+		setMovies([...movies, newFilm])
+	}
 
 	const filteredMovies = movies.filter(el => filter.toLowerCase() === "All".toLowerCase() ? el : el.genre.toLowerCase() === filter.toLowerCase())
 
@@ -38,6 +43,7 @@ function App() {
 						movies={filteredMovies}
 						title={title}
 						removeFilms={removeFilms}
+						addFilm={addFilm}
 					/>
 				</ul>
 			</div>

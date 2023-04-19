@@ -5,6 +5,7 @@ export type PropsType = {
 	movies: MovieType[]
 	title: string
 	removeFilms: (id: string) => void
+	addFilm: () => void
 }
 
 export type MovieType = {
@@ -33,7 +34,9 @@ export const Watchlist = (props: PropsType) => {
 					)
 				})}
 			</ul>
-			<AddForm/>
+			<AddForm
+				addFilm={props.addFilm}
+			/>
 		</>
 	);
 };
