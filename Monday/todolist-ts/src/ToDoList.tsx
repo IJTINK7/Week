@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType} from "./App";
+import {SuperInput} from "./components/SuperInput";
 
 type PropsType = {
 	id: string;
@@ -19,26 +20,26 @@ export type TaskType = {
 }
 
 export const ToDoList = (props: PropsType) => {
-	let [newTaskTitle, setNewTaskTitle] = useState("")
-	let [error, setError] = useState<null | string>(null)
-	const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setNewTaskTitle(e.currentTarget.value)
-	}
-	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-		setError(null)
-		if (e.ctrlKey && e.charCode === 13) {
-			props.addTask(props.id, newTaskTitle)
-			setNewTaskTitle("")
-		}
-	}
-	const addTaskHandler = () => {
-		if (newTaskTitle.trim() !== "") {
-			props.addTask(props.id, newTaskTitle.trim())
-			setNewTaskTitle("")
-		} else {
-			setError("Field is required")
-		}
-	}
+	// let [newTaskTitle, setNewTaskTitle] = useState("")
+	// let [error, setError] = useState<null | string>(null)
+	// const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+	// 	setNewTaskTitle(e.currentTarget.value)
+	// }
+	// const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+	// 	setError(null)
+	// 	if (e.ctrlKey && e.charCode === 13) {
+	// 		props.addTask(props.id, newTaskTitle)
+	// 		setNewTaskTitle("")
+	// 	}
+	// }
+	// const addTaskHandler = () => {
+	// 	if (newTaskTitle.trim() !== "") {
+	// 		props.addTask(props.id, newTaskTitle.trim())
+	// 		setNewTaskTitle("")
+	// 	} else {
+	// 		setError("Field is required")
+	// 	}
+	// }
 	const onAllClickHandler = () => props.changeFilter(props.id, "all");
 	const onCompletedClickHandler = () => props.changeFilter(props.id, "completed");
 	const onActiveClickHandler = () => props.changeFilter(props.id, "active");
@@ -52,16 +53,17 @@ export const ToDoList = (props: PropsType) => {
 				{props.title}
 				<button onClick={removeToDoListHandler}>x</button>
 			</h3>
-			<div>
-				<input
-					value={newTaskTitle}
-					onChange={onNewTitleChangeHandler}
-					onKeyPress={onKeyPressHandler}
-					className={error ? "error" : ""}
-				/>
-				<button onClick={addTaskHandler}>+</button>
-				{error && <div className={"error-message"}>{error}</div>}
-			</div>
+			<SuperInput/>
+			{/*<div>*/}
+			{/*	<input*/}
+			{/*		value={newTaskTitle}*/}
+			{/*		onChange={onNewTitleChangeHandler}*/}
+			{/*		onKeyPress={onKeyPressHandler}*/}
+			{/*		className={error ? "error" : ""}*/}
+			{/*	/>*/}
+			{/*	<button onClick={addTaskHandler}>+</button>*/}
+			{/*	{error && <div className={"error-message"}>{error}</div>}*/}
+			{/*</div>*/}
 			<ul>
 				{props.tasks.map(el => {
 					const onRemoveHandler = () => props.removeTask(props.id, el.id)
