@@ -1,8 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 
 type PropsType={
-	callBack:(title: string,todolistID: string )=> void
-	todolistID: string
+	callBack:(title: string)=> void
 }
 export const SuperInput = (props:PropsType) => {
 	let [newTaskTitle, setNewTaskTitle] = useState("")
@@ -10,7 +9,8 @@ export const SuperInput = (props:PropsType) => {
 
 	const addTaskHandler = () => {
 		if (newTaskTitle.trim() !== "") {
-			props.callBack(props.todolistID, newTaskTitle.trim())
+			props.callBack(newTaskTitle.trim())
+			console.log(newTaskTitle)
 			setNewTaskTitle("")
 		} else {
 			setError("Field is required")
@@ -22,7 +22,7 @@ export const SuperInput = (props:PropsType) => {
 	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
 		setError(null)
 		if (e.ctrlKey && e.charCode === 13) {
-			props.callBack(props.todolistID, newTaskTitle)
+			props.callBack(newTaskTitle)
 			setNewTaskTitle("")
 		}
 	}
