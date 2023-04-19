@@ -39,13 +39,6 @@ function App() {
 		]
 	})
 
-	// let [tasks, setTasks] = useState<Array<TasksType>>([
-	// 	{id: v1(), title: "HTML", isDone: true},
-	// 	{id: v1(), title: "CSS", isDone: true},
-	// 	{id: v1(), title: "JS", isDone: true},
-	// 	{id: v1(), title: "React", isDone: false},
-	// ])
-
 	const removeTask = (todolistId: string, taskId: string) => {
 		setTasks({...tasks, [todolistId]: tasks[todolistId].filter(el => el.id !== taskId)})
 	}
@@ -66,11 +59,11 @@ function App() {
 		setTodolists(todolists.filter(el => el.id !== todolistId))
 		delete tasks[todolistId]
 	}
-	const addTodolist = (newTitle:string) =>{
+	const addTodolist = (newTitle: string) => {
 		const newTodolistID = v1();
 		const newTodolist: TodolistType = {id: newTodolistID, title: newTitle, filter: "all"}
 		setTodolists([...todolists, newTodolist]);
-		setTasks({[newTodolistID]:[], ...tasks})
+		setTasks({[newTodolistID]: [], ...tasks})
 	}
 
 
@@ -105,7 +98,6 @@ function App() {
 }
 
 export default App;
-
 
 
 // Todolist 01

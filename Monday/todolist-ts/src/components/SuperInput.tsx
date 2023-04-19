@@ -1,9 +1,9 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 
-type PropsType={
-	callBack:(title: string)=> void
+type PropsType = {
+	callBack: (title: string) => void
 }
-export const SuperInput = (props:PropsType) => {
+export const SuperInput = (props: PropsType) => {
 	let [newTaskTitle, setNewTaskTitle] = useState("")
 	let [error, setError] = useState<null | string>(null)
 
