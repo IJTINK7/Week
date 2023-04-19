@@ -1,40 +1,11 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import React from "react";
 
-type PropsType ={
-	callBack: (newTaskTitle: string) => void;
-}
 
-export const AddItemForm = (props: PropsType) => {
-	let [newTaskTitle, setNewTaskTitle] = useState("")
-	let [error, setError] = useState<null | string>(null);
-	const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setNewTaskTitle(e.currentTarget.value)
-	}
-	const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-		setError(null)
-		if (e.ctrlKey && e.charCode === 13) {
-			props.callBack(newTaskTitle)
-			setNewTaskTitle("")
-		}
-	}
-	const addTaskHandler = () => {
-		if (newTaskTitle.trim() !== "") {
-			props.callBack(newTaskTitle.trim())
-			setNewTaskTitle("")
-		} else {
-			setError("Field is required")
-		}
-	}
+export const AddItemForm = () => {
+
 	return (
 		<div>
-			<input
-				value={newTaskTitle}
-				onChange={onNewTitleChangeHandler}
-				onKeyPress={onKeyPressHandler}
-				className={error ? "error" : ""}
-			/>
-			<button onClick={addTaskHandler}>+</button>
-			{error && <div className={"error-message"}>{error}</div>}
+			Hi
 		</div>
 	);
 }
