@@ -53,7 +53,7 @@ export const ToDoList = (props: PropsType) => {
 				{props.title}
 				<button onClick={removeToDoListHandler}>x</button>
 			</h3>
-			<SuperInput/>
+			<SuperInput callBack={props.addTask} todolistID={props.id}/>
 			{/*<div>*/}
 			{/*	<input*/}
 			{/*		value={newTaskTitle}*/}
