@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {TaskType, ToDoList} from "./ToDoList";
 import {v1} from "uuid";
+import {SuperInput} from "./components/SuperInput";
 
 export type FilterValuesType = "all" | "completed" | "active"
 type TodolistType = {
@@ -65,9 +66,15 @@ function App() {
 		setTodolists(todolists.filter(el => el.id !== todolistId))
 		delete tasks[todolistId]
 	}
+	const addTodolist = (newTitle:string) =>{
+		const newTodolist: TodolistType = {id: v1(), title: newTitle, filter: "all"}
+		setTodolists([...todolists, newTodolist]);
+	}
+
 
 	return (
 		<div className="App">
+			<SuperInput callBack={addTodolist} todolistID={"123"}/>
 			{
 				todolists.map(el => {
 					let tasksForTodolist = tasks[el.id];
