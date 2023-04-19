@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import React, {ChangeEvent} from "react";
 import {FilterValuesType} from "./App";
 import {SuperInput} from "./components/SuperInput";
 
@@ -46,6 +46,9 @@ export const ToDoList = (props: PropsType) => {
 	const removeToDoListHandler = () => {
 		props.removeToDoList(props.id);
 	}
+	const addTitleHandler = (newTitle: string)=> {
+		props.addTask(newTitle, props.id)
+	}
 
 	return (
 		<div>
@@ -53,7 +56,7 @@ export const ToDoList = (props: PropsType) => {
 				{props.title}
 				<button onClick={removeToDoListHandler}>x</button>
 			</h3>
-			<SuperInput callBack={props.addTask} todolistID={props.id}/>
+			<SuperInput callBack={addTitleHandler}/>
 			{/*<div>*/}
 			{/*	<input*/}
 			{/*		value={newTaskTitle}*/}
