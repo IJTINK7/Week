@@ -10,7 +10,6 @@ export const SuperInput = (props:PropsType) => {
 	const addTaskHandler = () => {
 		if (newTaskTitle.trim() !== "") {
 			props.callBack(newTaskTitle.trim())
-			console.log(newTaskTitle)
 			setNewTaskTitle("")
 		} else {
 			setError("Field is required")
