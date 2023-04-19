@@ -67,8 +67,10 @@ function App() {
 		delete tasks[todolistId]
 	}
 	const addTodolist = (newTitle:string) =>{
-		const newTodolist: TodolistType = {id: v1(), title: newTitle, filter: "all"}
+		const newTodolistID = v1();
+		const newTodolist: TodolistType = {id: newTodolistID, title: newTitle, filter: "all"}
 		setTodolists([...todolists, newTodolist]);
+		setTasks({[newTodolistID]:[], ...tasks})
 	}
 
 
