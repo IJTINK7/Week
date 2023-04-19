@@ -74,7 +74,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<SuperInput callBack={addTodolist} todolistID={"123"}/>
+			<SuperInput callBack={addTodolist}/>
 			{
 				todolists.map(el => {
 					let tasksForTodolist = tasks[el.id];
