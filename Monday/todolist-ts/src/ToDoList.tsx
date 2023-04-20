@@ -39,7 +39,7 @@ export const ToDoList = (props: PropsType) => {
 		<div>
 			<h3>
 				{/*{props.title}*/}
-				<EditableSpan oldTitle={props.title} callBack={(newTitle)=>editToDoListTitleHandler(newTitle)}/>
+				<EditableSpan oldTitle={props.title} callBack={editToDoListTitleHandler}/>
 				<button onClick={removeToDoListHandler}>x</button>
 			</h3>
 			<SuperInput callBack={addTitleHandler}/>
