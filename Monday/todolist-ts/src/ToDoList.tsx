@@ -13,6 +13,7 @@ type PropsType = {
 	changeTaskStatus: (todolistId: string, taskId: string, isDone: boolean) => void;
 	filter: FilterValuesType;
 	removeToDoList: (todolistId: string) => void;
+	editTask: (todolistId: string, taskId: string, newTitle: string) => void;
 }
 export type TaskType = {
 	id: string;
@@ -30,7 +31,6 @@ export const ToDoList = (props: PropsType) => {
 	const addTitleHandler = (newTitle: string) => {
 		props.addTask(props.id, newTitle)
 	}
-
 	return (
 		<div>
 			<h3>
@@ -42,6 +42,10 @@ export const ToDoList = (props: PropsType) => {
 				{props.tasks.map(el => {
 					const onRemoveHandler = () => props.removeTask(props.id, el.id)
 					const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => props.changeTaskStatus(props.id, el.id, e.currentTarget.checked);
+					const editTaskHandler = (newTitle: string) => {
+						props.editTask(props.id, el.id, newTitle)
+					}
+
 					return <li key={el.id}
 							   className={el.isDone ? "is-done" : ""}
 					>
@@ -50,7 +54,7 @@ export const ToDoList = (props: PropsType) => {
 							onChange={onChangeHandler}
 							checked={el.isDone}/>
 						{/*<span>{el.title}</span>*/}
-						<EditableSpan oldTitle={el.title}/>
+						<EditableSpan oldTitle={el.title} callBack={editTaskHandler}/>
 						<button onClick={onRemoveHandler}>x</button>
 					</li>
 				})}
