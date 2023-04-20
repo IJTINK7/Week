@@ -10,7 +10,7 @@ import {RootType} from './components/redux/state';
 
 type AppProps = {
     state: RootType,
-    addPost:any
+    addPost:(postMessage: string)=>void
 }
 
 
@@ -21,7 +21,7 @@ function App(props:AppProps) {
             <Nav/>
             <div className="app-wrapper-content">
                 <Routes>
-                    <Route path={'/profile'} element={<Profile profilePage={props.state.profilePage}/>}/>
+                    <Route path={'/profile'} element={<Profile profilePage={props.state.profilePage} addPost={props.addPost}/>}/>
                     <Route path={'/dialogs'} element={<Dialogs/>}/>
                 </Routes>
             </div>
