@@ -1,3 +1,7 @@
+// https://www.youtube.com/watch?v=F2fEHAg4eyY&list=PLbLBXDhswD1eh7Df_-IBfphhqUB9bZhi6&index=64
+//
+// 02:15:00 - 02:52:00 arguments Transferring (пробрасывание)
+
 import React, {useState} from 'react';
 import './App.css';
 import {TaskType, ToDoList} from "./ToDoList";
@@ -69,6 +73,9 @@ function App() {
 	const editTask = (todolistId: string, taskId: string, newTitle: string) => {
 		setTasks({...tasks, [todolistId]: tasks[todolistId].map(el=> el.id === taskId ? {...el, title: newTitle} : el)})
 	}
+	const editToDoListTitle = (todolistId: string, newTitle: string) => {
+		setTodolists(todolists.map(el=>el.id === todolistId ? {...el, title: newTitle}: el))
+	}
 
 	return (
 		<div className="App">
@@ -94,6 +101,7 @@ function App() {
 						filter={el.filter}
 						removeToDoList={removeToDoList}
 						editTask={editTask}
+						editToDoListTitle={editToDoListTitle}
 					/>
 				})
 			}
