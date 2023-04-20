@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 
 type PropsType={
-	title: string
+	oldTitle: string
 }
 export const EditableSpan = (props:PropsType) => {
+	const [newTitle, setNewTitle] = useState(props.oldTitle)
 	const [edit, setEdit] = useState(false);
 	const editTagHandler = () => {
 		setEdit(!edit)
@@ -11,9 +12,12 @@ export const EditableSpan = (props:PropsType) => {
 	const editTagHandler1 = () => {
 		setEdit(false)
 	}
+	const onChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {
+		setNewTitle(e.currentTarget.value)
+	}
 	return (
 		edit
-		?<input type="text" value={props.title} onBlur={editTagHandler1} autoFocus onChange={editTagHandler}/>
-		:<span onDoubleClick={editTagHandler}>{props.title}</span>
+		?<input type="text" value={newTitle} onBlur={editTagHandler1} autoFocus onChange={onChangeHandler}/>
+		:<span onDoubleClick={editTagHandler}>{props.oldTitle}</span>
 	);
 };
