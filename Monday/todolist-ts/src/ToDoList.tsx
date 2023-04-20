@@ -50,7 +50,7 @@ export const ToDoList = (props: PropsType) => {
 							onChange={onChangeHandler}
 							checked={el.isDone}/>
 						{/*<span>{el.title}</span>*/}
-						<EditableSpan title ={el.title}/>
+						<EditableSpan oldTitle={el.title}/>
 						<button onClick={onRemoveHandler}>x</button>
 					</li>
 				})}
