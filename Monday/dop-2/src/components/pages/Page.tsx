@@ -1,6 +1,10 @@
 import React from 'react';
+import {PagesType} from "../../dataState/DataState";
 
-export const Page = () => {
+type PropsType ={
+	pages: Array<PagesType>
+}
+export const Page = (props:PropsType) => {
 	return (
 		<div>
 			Main page

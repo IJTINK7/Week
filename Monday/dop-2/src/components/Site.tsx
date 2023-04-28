@@ -6,6 +6,7 @@ import {PageTwo} from "./pages/PageTwo";
 import {PageThree} from "./pages/PageThree";
 import {Error404} from "./pages/Error404";
 import {Page} from "./pages/Page";
+import {DataState} from "../dataState/DataState";
 
 
 export const Site = () => {
@@ -22,9 +23,9 @@ export const Site = () => {
                 <div className={styles.content}>
                     <Routes>
                         <Route path={"/"} element={<Navigate to={"/page/0"} />}/>
-                        <Route path={"/page1"} element={<Page/>}/>
-                        <Route path={"/page2"} element={<Page/>}/>
-                        <Route path={"/page3"} element={<Page/>}/>
+                        <Route path={"/page1"} element={<Page pages={DataState.pages}/>}/>
+                        <Route path={"/page2"} element={<Page pages={DataState.pages}/>}/>
+                        <Route path={"/page3"} element={<Page pages={DataState.pages}/>}/>
                         <Route path={"*"} element={<Error404/>}/>
                     </Routes>
                 </div>
