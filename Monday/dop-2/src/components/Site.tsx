@@ -23,9 +23,9 @@ export const Site = () => {
                 <div className={styles.content}>
                     <Routes>
                         <Route path={"/"} element={<Navigate to={"/page/0"} />}/>
-                        <Route path={"/page1"} element={<Page pages={DataState.pages}/>}/>
-                        <Route path={"/page2"} element={<Page pages={DataState.pages}/>}/>
-                        <Route path={"/page3"} element={<Page pages={DataState.pages}/>}/>
+                        <Route path={"/page/:id"} element={<Page pages={DataState.pages}/>}/>
+                        <Route path={"/page/:id"} element={<Page pages={DataState.pages}/>}/>
+                        <Route path={"/page/:id"} element={<Page pages={DataState.pages}/>}/>
                         <Route path={"*"} element={<Error404/>}/>
                     </Routes>
                 </div>
