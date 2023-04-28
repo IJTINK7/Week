@@ -1,18 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
+import {Site} from "./components/Site";
+
 
 function App() {
-  let a = 100500;
-  useEffect(()=>{
-    fetch('https://jsonplaceholder.typicode.com/todos')
-        .then(response => response.json())
-        .then(json => console.log(json))
-  }, [a])
-  return (
-    <div className="App">
-
-    </div>
-  );
+    return (
+        <div>
+            <Site/>
+        </div>
+    );
 }
+
 
 export default App;
