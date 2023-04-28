@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navigate, Route, Routes} from 'react-router-dom';
+import {Navigate, NavLink, Route, Routes} from 'react-router-dom';
 import styles from './Site.module.css'
 import {PageOne} from "./pages/PageOne";
 import {PageTwo} from "./pages/PageTwo";
@@ -13,7 +13,7 @@ export const Site = () => {
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-
+                    <div><NavLink to={"/page1"}>Page1</NavLink></div>
                 </div>
                 <div className={styles.content}>
                     <Routes>
