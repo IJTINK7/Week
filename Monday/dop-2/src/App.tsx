@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 import {v1} from 'uuid';
+import { useEffect } from 'react';
 
 type ObjectType = {
     title: string
@@ -137,7 +138,9 @@ function App() {
             ]
         }
     ]
-}
+
+    useEffect(()=>{},[])
+
     // let todolistId1 = v1();
     // let todolistId2 = v1();
     //
@@ -159,9 +162,6 @@ function App() {
 
     // const [todo, setTodo] = useState<Array<ObjectType>>()
 
-
-
-
     function removeTask(id: string, todolistId: string) {
         // //достанем нужный массив по todolistId:
         // let todolistTasks = tasks[todolistId];
@@ -170,7 +170,6 @@ function App() {
         // // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         // setTasks({...tasks});
     }
-
     function addTask(title: string, todolistId: string) {
         // let task = {id: v1(), title: title, isDone: false};
         // //достанем нужный массив по todolistId:
@@ -180,7 +179,6 @@ function App() {
         // // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         // setTasks({...tasks});
     }
-
     function changeStatus(id: string, isDone: boolean, todolistId: string) {
         // //достанем нужный массив по todolistId:
         // let todolistTasks = tasks[todolistId];
@@ -193,7 +191,6 @@ function App() {
         //     setTasks({...tasks});
         // }
     }
-
     function changeFilter(value: FilterValuesType, todolistId: string) {
         // let todolist = todolists.find(tl => tl.id === todolistId);
         // if (todolist) {
@@ -201,7 +198,6 @@ function App() {
         //     setTodolists([...todolists])
         // }
     }
-
     function removeTodolist(id: string) {
     //     // засунем в стейт список тудулистов, id которых не равны тому, который нужно выкинуть
     //     setTodolists(todolists.filter(tl => tl.id != id));
